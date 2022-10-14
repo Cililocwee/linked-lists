@@ -154,10 +154,9 @@ class LinkedList {
         }
     }
   
-  // UNFINISHED **
   // removes the node at the given index
     removeAt(index) {
-      if (index > this.size()){
+      if (index > this.size() - 1){
         return "Error: out of range"
       }
       let node = this.head;
@@ -166,8 +165,7 @@ class LinkedList {
           if (counter === index -1){
             let leftNode = node;
             let rightNode = node.next;
-            leftNode.next = new Node(value);
-            leftNode.next.next = rightNode;
+            leftNode.next = rightNode.next;
           }
             counter++;
             node = node.next;
@@ -185,10 +183,3 @@ node1.next = node2;
 node2.next = node3;
 
 let list = new LinkedList(node1);
-
-console.log(list.toString());
-list.insertAt(1, 12)
-console.log(list.toString())
-list.insertAt(3,20)
-console.log(list.toString())
-list.insertAt(6,90);
