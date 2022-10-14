@@ -58,7 +58,7 @@ class LinkedList {
 
     // returns the node at the given index
     at(index) {
-        if (index > list.size() - 1) {
+        if (index > this.size() - 1) {
             return 'Error: out of range'
         }
         let counter = 0;
@@ -134,5 +134,61 @@ class LinkedList {
         nodeMap += " null"
         return nodeMap;
     }
-
+  
+  // inserts a new node with the provided value at the given index
+    insertAt(index, value) {
+      if (index > this.size()){
+        return "Error: out of range"
+      }
+      let node = this.head;
+      let counter = 0;
+        while (node != null) {
+          if (counter === index -1){
+            let leftNode = node;
+            let rightNode = node.next;
+            leftNode.next = new Node(value);
+            leftNode.next.next = rightNode;
+          }
+            counter++;
+            node = node.next;
+        }
+    }
+  
+  // UNFINISHED **
+  // removes the node at the given index
+    removeAt(index) {
+      if (index > this.size()){
+        return "Error: out of range"
+      }
+      let node = this.head;
+      let counter = 0;
+        while (node != null) {
+          if (counter === index -1){
+            let leftNode = node;
+            let rightNode = node.next;
+            leftNode.next = new Node(value);
+            leftNode.next.next = rightNode;
+          }
+            counter++;
+            node = node.next;
+        }
+    }
 }
+
+// TESTING
+
+let node1 = new Node(5);
+let node2 = new Node(9);
+let node3 = new Node(11);
+
+node1.next = node2;
+node2.next = node3;
+
+let list = new LinkedList(node1);
+
+console.log(list.toString());
+list.insertAt(1, 12)
+console.log(list.toString())
+list.insertAt(3,20)
+console.log(list.toString())
+list.insertAt(6,90);
